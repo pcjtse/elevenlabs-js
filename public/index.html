@@ -3,28 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ElevenLabs TTS Demo</title>
+  <title>ElevenLabs Voice Changer</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 2em; }
-    textarea { width: 100%; height: 100px; }
+    body { 
+      font-family: Arial, sans-serif; 
+      margin: 2em;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2em;
+    }
+    .container {
+      background: #f5f5f5;
+      padding: 2em;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    textarea { 
+      width: 100%; 
+      height: 100px;
+      margin: 1em 0;
+      padding: 0.5em;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    select, button {
+      padding: 0.5em 1em;
+      margin: 0.5em 0;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: white;
+    }
+    button {
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .input-section {
+      margin-bottom: 2em;
+    }
+    .controls {
+      display: flex;
+      gap: 1em;
+      align-items: center;
+      margin: 1em 0;
+    }
+    #audio {
+      width: 100%;
+      margin-top: 1em;
+    }
+    .recording-indicator {
+      display: none;
+      color: red;
+      margin-left: 1em;
+    }
+    .recording-indicator.active {
+      display: inline;
+    }
   </style>
 </head>
 <body>
-  <h1>ElevenLabs Text to Speech</h1>
-  <label for="text">Text:</label><br>
-  <textarea id="text" placeholder="Enter text here..."></textarea><br><br>
+  <div class="container">
+    <h1>ElevenLabs Voice Changer</h1>
+    
+    <div class="input-section">
+      <h2>Text Input</h2>
+      <label for="text">Enter text:</label>
+      <textarea id="text" placeholder="Enter text here..."></textarea>
+      
+      <div class="controls">
+        <label for="voice">Voice:</label>
+        <select id="voice"></select>
 
-  <label for="voice">Voice:</label>
-  <select id="voice"></select>
+        <label for="model">Model:</label>
+        <select id="model">
+          <option value="eleven_monolingual_v1">eleven_monolingual_v1</option>
+          <option value="eleven_multilingual_v1">eleven_multilingual_v1</option>
+        </select>
 
-  <label for="model">Model:</label>
-  <select id="model">
-    <option value="eleven_monolingual_v1">eleven_monolingual_v1</option>
-    <option value="eleven_multilingual_v1">eleven_multilingual_v1</option>
-  </select>
-  <br><br>
-  <button id="speak">Speak</button>
-  <audio id="audio" controls style="display:block;margin-top:1em;"></audio>
+        <button id="speak">Convert to Speech</button>
+      </div>
+    </div>
+
+    <div class="input-section">
+      <h2>Voice Input</h2>
+      <div class="controls">
+        <button id="startRecording">Start Recording</button>
+        <button id="stopRecording" disabled>Stop Recording</button>
+        <span id="recordingIndicator" class="recording-indicator">Recording...</span>
+      </div>
+      <div id="transcription" style="margin-top: 1em;"></div>
+    </div>
+
+    <audio id="audio" controls></audio>
+  </div>
 
   <script src="script.js"></script>
 </body>

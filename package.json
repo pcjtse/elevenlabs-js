@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Simple web app using ElevenLabs API",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node server.js",
     "test": "echo \"No tests specified\" && exit 0"

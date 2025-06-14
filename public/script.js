@@ -77,7 +77,7 @@ async function speak(text = null) {
       body: JSON.stringify({ 
         text: textToSpeak, 
         voiceId: voice, 
-        modelId: model 
+        modelId: model
       })
     });
 

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ElevenLabs TTS Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    textarea { width: 100%; height: 100px; }
+  </style>
+</head>
+<body>
+  <h1>ElevenLabs Text to Speech</h1>
+  <label for="text">Text:</label><br>
+  <textarea id="text" placeholder="Enter text here..."></textarea><br><br>
+
+  <label for="voice">Voice:</label>
+  <select id="voice"></select>
+
+  <label for="model">Model:</label>
+  <select id="model">
+    <option value="eleven_monolingual_v1">eleven_monolingual_v1</option>
+    <option value="eleven_multilingual_v1">eleven_multilingual_v1</option>
+  </select>
+  <br><br>
+  <button id="speak">Speak</button>
+  <audio id="audio" controls style="display:block;margin-top:1em;"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
